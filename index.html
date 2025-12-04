@@ -76,20 +76,6 @@
             color: var(--primary-gold);
         }
 
-        .cta-btn-small {
-            border: 1px solid var(--primary-gold);
-            padding: 8px 20px;
-            border-radius: 50px;
-            color: var(--primary-gold);
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        .cta-btn-small:hover {
-            background: var(--primary-gold);
-            color: var(--bg-dark);
-        }
-
         /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
@@ -117,44 +103,6 @@
             max-width: 600px;
             margin-bottom: 40px;
             font-weight: 300;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        /* --- BUTTON STYLES --- */
-        .btn-primary {
-            background-color: var(--primary-gold);
-            color: var(--bg-dark);
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            /* Added Glow Effect */
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-gold-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
-        }
-
-        .btn-secondary {
-            border: 1px solid var(--text-dim);
-            color: var(--text-light);
-            padding: 15px 35px;
-            border-radius: 50px;
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--text-light);
-            background: rgba(255,255,255,0.05);
         }
 
         /* --- FEATURES SECTION --- */
@@ -206,7 +154,6 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .nav-links { display: none; }
-            .cta-btn-small { display: none; }
         }
     </style>
 </head>
@@ -219,8 +166,7 @@
             <a href="#">Technology</a>
             <a href="#">About Us</a>
         </div>
-        <a href="https://www.jewels-ai.com/" target="_blank" class="cta-btn-small">Visit Site</a>
-    </nav>
+        </nav>
 
     <header class="hero">
         <h5>INTELLIGENCE MEETS ELEGANCE</h5>
@@ -228,12 +174,7 @@
         <p>
             Experience the next evolution of jewelry retail. We combine precision artificial intelligence with timeless craftsmanship to deliver personalized luxury.
         </p>
-        <div class="hero-buttons">
-            <a href="https://www.jewels-ai.com/" target="_blank" class="btn-primary">Visit Jewels-ai.com</a>
-            
-            <a href="#" class="btn-secondary">View Demo</a>
-        </div>
-    </header>
+        </header>
 
     <section class="features">
         <div class="feature-card">
