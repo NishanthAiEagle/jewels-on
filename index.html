@@ -4,249 +4,242 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jewels-ai | The Future of Luxury</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* --- CSS VARIABLES --- */
+        /* --- VARIABLES --- */
         :root {
-            --primary-gold: #D4AF37;
-            --primary-gold-hover: #B5952F;
-            --bg-dark: #0f1014;
-            --bg-card: #1a1c23;
-            --text-light: #f5f5f5;
-            --text-dim: #a0a0a0;
+            --gold: #D4AF37;
+            --gold-light: #F4D06F;
+            --bg-dark: #0a0b0e;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
         }
 
-        /* --- GLOBAL STYLES --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* --- RESET & BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
-            color: var(--text-light);
-            line-height: 1.6;
+            color: var(--text-main);
+            overflow-x: hidden;
+            /* Subtle animated background */
+            background: linear-gradient(135deg, #050505 0%, #111115 50%, #050505 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
         }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: 0.3s;
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- NAVIGATION --- */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            position: fixed;
+        .fade-in-1 { animation: fadeInUp 1s ease forwards; opacity: 0; animation-delay: 0.2s; }
+        .fade-in-2 { animation: fadeInUp 1s ease forwards; opacity: 0; animation-delay: 0.4s; }
+        .fade-in-3 { animation: fadeInUp 1s ease forwards; opacity: 0; animation-delay: 0.6s; }
+        .fade-in-4 { animation: fadeInUp 1s ease forwards; opacity: 0; animation-delay: 0.8s; }
+
+        /* --- LAYOUT --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER / LOGO --- */
+        header {
+            padding: 30px 0;
+            text-align: center;
+            position: absolute;
             width: 100%;
             top: 0;
-            background: rgba(15, 16, 20, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            z-index: 10;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
             font-family: 'Playfair Display', serif;
-            letter-spacing: 1px;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            font-weight: 600;
         }
 
-        .logo span {
-            color: var(--primary-gold);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-gold);
-        }
-
-        .cta-btn-small {
-            border: 1px solid var(--primary-gold);
-            padding: 8px 20px;
-            border-radius: 50px;
-            color: var(--primary-gold);
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        .cta-btn-small:hover {
-            background: var(--primary-gold);
-            color: var(--bg-dark);
-        }
+        .logo span { color: var(--gold); }
 
         /* --- HERO SECTION --- */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
-            background: radial-gradient(circle at center, #1f222b 0%, var(--bg-dark) 70%);
+            padding: 100px 20px 50px;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 500;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #fff, #D4AF37);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem); /* Responsive font size */
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: linear-gradient(to bottom right, #fff, #aaa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            line-height: 1.2;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            color: var(--text-dim);
-            max-width: 600px;
-            margin-bottom: 40px;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 550px;
+            line-height: 1.8;
+            margin-bottom: 50px;
             font-weight: 300;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
+        /* --- LUXURY BUTTON --- */
+        .btn-gold {
+            display: inline-block;
+            padding: 16px 40px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
 
-        /* --- BUTTON STYLES --- */
-        .btn-primary {
-            background-color: var(--primary-gold);
+        .btn-gold::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 0%; height: 100%;
+            background: var(--gold);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn-gold:hover {
             color: var(--bg-dark);
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            /* Added Glow Effect */
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
         }
 
-        .btn-primary:hover {
-            background-color: var(--primary-gold-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
-        }
-
-        .btn-secondary {
-            border: 1px solid var(--text-dim);
-            color: var(--text-light);
-            padding: 15px 35px;
-            border-radius: 50px;
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--text-light);
-            background: rgba(255,255,255,0.05);
+        .btn-gold:hover::before {
+            width: 100%;
         }
 
         /* --- FEATURES SECTION --- */
-        .features {
-            padding: 80px 10%;
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 50px 0 100px;
         }
 
-        .feature-card {
-            background: var(--bg-card);
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
             padding: 40px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.3s;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
-        .feature-card:hover {
-            border-color: var(--primary-gold);
-            transform: translateY(-5px);
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
         }
 
-        .feature-icon {
+        .icon {
             font-size: 2rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            display: block;
         }
 
-        .feature-card h3 {
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
             margin-bottom: 15px;
-            color: var(--primary-gold);
+            color: var(--text-main);
         }
 
-        .feature-card p {
-            color: var(--text-dim);
-            font-size: 0.9rem;
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
         }
 
         /* --- FOOTER --- */
         footer {
-            padding: 40px;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-dim);
-            font-size: 0.9rem;
-        }
-
-        /* --- MOBILE RESPONSIVENESS --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .nav-links { display: none; }
-            .cta-btn-small { display: none; }
+            padding: 40px;
+            border-top: 1px solid var(--glass-border);
+            color: #444;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
-    
-
-    <header class="hero">
-        <h5>INTELLIGENCE MEETS ELEGANCE</h5>
-        <h1>Welcome to Jewels-ai</h1>
-        <p>
-            Experience the next evolution of jewelry retail. We combine precision artificial intelligence with timeless craftsmanship to deliver personalized luxury.
-        </p>
-        <div class="hero-buttons">
-            <a href="https://www.jewels-ai.com/" target="_blank" class="btn-primary">Visit Jewels-ai.com</a>
-            
-            
-        </div>
+    <header class="fade-in-1">
+        <div class="logo">JEWELS<span>-AI</span></div>
     </header>
 
-    <section class="features">
-        <div class="feature-card">
-            <div class="feature-icon">💎</div>
-            <h3>Smart Valuation</h3>
-            <p>AI-driven market analysis for real-time gemstone pricing and trend forecasting.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">✨</div>
-            <h3>Virtual Try-On</h3>
-            <p>Augmented reality that lets customers wear your pieces before they buy.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">🤖</div>
-            <h3>Automated Design</h3>
-            <p>Generative AI that assists craftsmen in creating unique, bespoke patterns.</p>
-        </div>
-    </section>
+    <div class="container">
+        <section class="hero">
+            <span class="subtitle fade-in-1">The Future of Retail</span>
+            <h1 class="fade-in-2">Precision Meets<br>Perfection</h1>
+            <p class="fade-in-3">
+                Experience the next evolution of jewelry. We combine artificial intelligence with timeless craftsmanship to deliver personalized luxury like never before.
+            </p>
+            
+            <div class="fade-in-3">
+                <a href="https://www.jewels-ai.com/" target="_blank" class="btn-gold">Enter World</a>
+            </div>
+        </section>
+
+        <section class="features-grid fade-in-4">
+            <div class="card">
+                <span class="icon">💎</span>
+                <h3>Smart Valuation</h3>
+                <p>Real-time AI analysis for precise gemstone pricing and market trend forecasting.</p>
+            </div>
+            <div class="card">
+                <span class="icon">✨</span>
+                <h3>Virtual Try-On</h3>
+                <p>Immersive augmented reality that allows clients to experience pieces instantly.</p>
+            </div>
+            <div class="card">
+                <span class="icon">🤖</span>
+                <h3>Generative Design</h3>
+                <p>Assisting master craftsmen with unique, AI-generated bespoke patterns.</p>
+            </div>
+        </section>
+    </div>
 
     <footer>
-        <p>&copy; 2025 Jewels-ai. Redefining the brilliance of business.</p>
+        &copy; 2025 JEWELS-AI. ALL RIGHTS RESERVED.
     </footer>
 
 </body>
